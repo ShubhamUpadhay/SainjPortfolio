@@ -33,12 +33,13 @@ pipeline {
         sh '''
           export VITE_APP_VERSION=$GIT_COMMIT
           npm run build
-          cp dist/index.html dist/404.html
+          # SPA fallback so client-side routes work on GitHub Pages
+          cp build/index.html build/404.html
         '''
       }
     }
+
     stage('Deploy → gh-pages') {
-      environment { GH_NAME='ShubhamUpadhay'; GH_EMAIL='shubham.0@outlook.com' }
       steps {
         withCredentials([string(credentialsId: 'gh_pat', variable: 'GH_PAT')]) {
           sh '''
@@ -48,6 +49,7 @@ pipeline {
             git config --global user.name  "${GH_NAME}"
             git config --global user.email "${GH_EMAIL}"
 
+            # Clone gh-pages (or create it if first time)
             git clone --depth 1 --branch gh-pages \
               https://${GH_PAT}@github.com/${REPO_SLUG}.git "$WORKDIR" || {
               git clone --depth 1 https://${GH_PAT}@github.com/${REPO_SLUG}.git "$WORKDIR"
@@ -60,7 +62,9 @@ pipeline {
               git push -u origin gh-pages
             }
 
-            rsync -av --delete ./dist/ "$WORKDIR"/
+            # Sync built output (note: using build/, not dist/)
+            rsync -av --delete ./build/ "$WORKDIR"/
+
             cd "$WORKDIR"
             git add -A
             if ! git diff --cached --quiet; then
@@ -74,6 +78,7 @@ pipeline {
       }
     }
   }
+
   post {
     success { echo '✅ Deployed to gh-pages.' }
     failure { echo '❌ Build failed. Check logs.' }
