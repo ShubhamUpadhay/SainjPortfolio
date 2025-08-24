@@ -10,6 +10,8 @@ pipeline {
     GH_EMAIL  = 'jenkins-bot@example.com'
     NVM_DIR   = "${WORKSPACE}/.nvm"
     NODE_VER  = '20'
+    ROLLUP_SKIP_NODEJS_NATIVE = '1'   // 👈 key line
+  CI = 'true'
   }
 
   stages {
