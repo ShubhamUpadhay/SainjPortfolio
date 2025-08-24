@@ -11,6 +11,8 @@ pipeline {
     NVM_DIR   = "${WORKSPACE}/.nvm"
     NODE_VER  = '20'
     CI        = 'true'
+    // Force Rollup to use JS implementation (avoid native binary on ARM)
+    ROLLUP_SKIP_NODEJS_NATIVE = '1'
   }
 
   stages {
@@ -52,23 +54,21 @@ pipeline {
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
 
-          # Ensure Rollup uses JS path by default
-          export ROLLUP_SKIP_NODEJS_NATIVE=1
-          echo "ROLLUP_SKIP_NODEJS_NATIVE=$ROLLUP_SKIP_NODEJS_NATIVE"
-
-          # Deterministic install; if npm ci hits the optional-deps bug, clean & reinstall
-          npm ci || {
-            echo "npm ci failed — retry clean install"
+          # Deterministic install; if npm ci stumbles, clean and reinstall
+          ROLLUP_SKIP_NODEJS_NATIVE=1 npm ci || {
+            echo "npm ci failed — retrying with clean install"
             rm -rf node_modules package-lock.json
-            npm install
+            ROLLUP_SKIP_NODEJS_NATIVE=1 npm install
           }
 
-          # ARM fallback: if Rollup still tries native, install the platform binary explicitly
+          # Ensure SWC native binding exists on linux/arm64 (Debian/Ubuntu -> gnu libc)
           ARCH=$(node -p "process.arch")
-          if [ "$ARCH" = "arm64" ]; then
-            node -e "try{require('rollup');console.log('rollup import OK')}catch(e){process.exit(42)}" || {
-              echo "Installing @rollup/rollup-linux-arm64-gnu as fallback..."
-              npm i -D @rollup/rollup-linux-arm64-gnu@latest
+          PLAT=$(node -p "process.platform")
+          if [ "$PLAT" = "linux" ] && [ "$ARCH" = "arm64" ]; then
+            node -e "require('@swc/core'); console.log('swc ok')" || {
+              echo "Installing @swc/core-linux-arm64-gnu fallback..."
+              npm i -D @swc/core-linux-arm64-gnu@latest
+              node -e "require('@swc/core'); console.log('swc ok after install')"
             }
           fi
         '''
@@ -82,11 +82,8 @@ pipeline {
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
 
-          # Keep env for the exact build process
-          export ROLLUP_SKIP_NODEJS_NATIVE=1
-          echo "ROLLUP_SKIP_NODEJS_NATIVE=$ROLLUP_SKIP_NODEJS_NATIVE"
-
-          VITE_APP_VERSION=$GIT_COMMIT npm run build
+          # Keep Rollup in JS mode during build
+          ROLLUP_SKIP_NODEJS_NATIVE=1 VITE_APP_VERSION=$GIT_COMMIT npm run build
 
           # Your vite.config.ts uses outDir: "build" — add SPA fallback
           cp build/index.html build/404.html
