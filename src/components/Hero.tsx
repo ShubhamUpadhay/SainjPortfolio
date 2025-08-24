@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Shield, Award, Users } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function Hero() {
@@ -10,15 +10,34 @@ export function Hero() {
     }
   };
 
+  const credentials = [
+    {
+      icon: Shield,
+      title: "CISA Certified",
+      subtitle: "IT Auditor"
+    },
+    {
+      icon: Award,
+      title: "Juris Doctor",
+      subtitle: "Technology Law"
+    },
+    {
+      icon: Users,
+      title: "10+ Years",
+      subtitle: "Experience"
+    }
+  ];
+
   return (
     <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-all duration-500 relative overflow-hidden">
-      {/* Hero gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/10 dark:from-primary/10 dark:to-secondary/5"></div>
+      {/* Professional gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="space-y-4">
+          {/* Content Side */}
+          <div className="space-y-8">
+            <div className="space-y-6">
               <h1 className="text-4xl lg:text-5xl tracking-tight">
                 Expert IT Auditing & Legal Consultation
               </h1>
@@ -48,24 +67,42 @@ export function Hero() {
               </Button>
             </div>
 
+            {/* Professional Credentials */}
+            <div className="grid grid-cols-3 gap-4">
+              {credentials.map((credential, index) => {
+                const Icon = credential.icon;
+                return (
+                  <div key={index} className="bg-gradient-to-br from-card via-card to-primary/5 dark:to-primary/10 rounded-xl p-4 border border-primary/10 dark:border-primary/20 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 text-center">
+                    <div className="w-8 h-8 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <Icon className="h-4 w-4 text-primary" />
+                    </div>
+                    <div className="font-medium text-sm">{credential.title}</div>
+                    <div className="text-xs text-muted-foreground">{credential.subtitle}</div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Key Statistics */}
             <div className="flex items-center space-x-8 pt-4">
               <div className="text-center">
-                <div className="font-medium">10+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="font-medium">500+</div>
+                <div className="text-2xl font-medium">500+</div>
                 <div className="text-sm text-muted-foreground">Audits Completed</div>
               </div>
               <div className="text-center">
-                <div className="font-medium">50+</div>
+                <div className="text-2xl font-medium">50+</div>
                 <div className="text-sm text-muted-foreground">Legal Cases</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-medium">98%</div>
+                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
               </div>
             </div>
           </div>
 
+          {/* Profile Image Side */}
           <div className="lg:order-2">
-            <div className="relative">
+            <div className="relative max-w-md mx-auto">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <ImageWithFallback
                   src="https://images.unsplash.com/photo-1576558656222-ba66febe3dec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMGJ1c2luZXNzfGVufDF8fHx8MTc1NTc5MjgzMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"

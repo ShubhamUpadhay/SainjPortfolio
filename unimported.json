@@ -1,0 +1,59 @@
+
+       summary               unimported v1.31.0 (node)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       entry file          : src/main.tsx
+
+       unresolved imports  : 0
+       unused dependencies : 0
+       unimported files    : 42
+
+
+─────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     │ 42 unimported files
+─────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/accordion.tsx
+   2 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/alert-dialog.tsx
+   3 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/alert.tsx
+   4 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/aspect-ratio.tsx
+   5 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/avatar.tsx
+   6 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/breadcrumb.tsx
+   7 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/calendar.tsx
+   8 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/carousel.tsx
+   9 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/chart.tsx
+  10 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/checkbox.tsx
+  11 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/collapsible.tsx
+  12 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/command.tsx
+  13 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/context-menu.tsx
+  14 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/dialog.tsx
+  15 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/drawer.tsx
+  16 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/dropdown-menu.tsx
+  17 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/form.tsx
+  18 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/hover-card.tsx
+  19 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/input-otp.tsx
+  20 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/input.tsx
+  21 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/label.tsx
+  22 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/menubar.tsx
+  23 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/navigation-menu.tsx
+  24 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/pagination.tsx
+  25 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/popover.tsx
+  26 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/radio-group.tsx
+  27 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/resizable.tsx
+  28 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/scroll-area.tsx
+  29 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/select.tsx
+  30 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/sheet.tsx
+  31 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/sidebar.tsx
+  32 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/skeleton.tsx
+  33 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/slider.tsx
+  34 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/sonner.tsx
+  35 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/switch.tsx
+  36 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/table.tsx
+  37 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/tabs.tsx
+  38 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/textarea.tsx
+  39 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/toggle-group.tsx
+  40 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/toggle.tsx
+  41 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/tooltip.tsx
+  42 │ /Users/dumbledore/Documents/sainj_portfolio/src/components/ui/use-mobile.ts
+─────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+       Inspect the results and run npx unimported -u to update ignore lists

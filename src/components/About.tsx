@@ -26,8 +26,14 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-16 bg-gradient-to-b from-secondary/10 via-background to-accent/5 dark:from-secondary/5 dark:via-background dark:to-accent/10 transition-all duration-500 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-16 bg-gradient-to-b from-secondary/10 via-background to-accent/5 dark:from-secondary/5 dark:via-background dark:to-accent/10 transition-all duration-500 relative overflow-hidden">
+      {/* Professional background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle gradient accent */}
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl mb-4">About Sarah Mitchell</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

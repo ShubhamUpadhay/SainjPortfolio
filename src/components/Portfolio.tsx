@@ -72,8 +72,25 @@ export function Portfolio() {
   ];
 
   return (
-    <section id="portfolio" className="py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-16 bg-gradient-to-br from-background via-secondary/8 to-accent/12 dark:via-secondary/4 dark:to-accent/6 transition-all duration-500 relative overflow-hidden">
+      {/* Professional background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle wave pattern */}
+        <div className="absolute bottom-0 left-0 w-full h-32 opacity-20 dark:opacity-10">
+          <svg className="w-full h-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="url(#wave-gradient)" opacity="0.5"/>
+            <defs>
+              <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3"/>
+                <stop offset="50%" stopColor="hsl(var(--secondary))" stopOpacity="0.5"/>
+                <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.3"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl mb-4">Portfolio & Case Studies</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

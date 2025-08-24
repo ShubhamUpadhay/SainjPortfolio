@@ -76,8 +76,17 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-16 bg-gradient-to-b from-accent/5 via-background to-secondary/10 dark:from-accent/10 dark:via-background dark:to-secondary/5 transition-all duration-500 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-16 bg-gradient-to-b from-accent/5 via-background to-secondary/10 dark:from-accent/10 dark:via-background dark:to-secondary/5 transition-all duration-500 relative overflow-hidden">
+      {/* Professional background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Subtle diagonal gradient bands */}
+        <div className="absolute top-0 left-0 w-full h-full transform rotate-12">
+          <div className="absolute top-1/4 left-0 w-full h-24 bg-gradient-to-r from-transparent via-primary/5 to-transparent blur-2xl"></div>
+          <div className="absolute top-3/4 left-0 w-full h-16 bg-gradient-to-r from-transparent via-secondary/8 to-transparent blur-2xl"></div>
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl mb-4">Experience & Credentials</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

@@ -11,7 +11,6 @@ pipeline {
     NVM_DIR   = "${WORKSPACE}/.nvm"
     NODE_VER  = '20'
     CI        = 'true'
-    // # Ask Rollup to prefer JS implementation; we still add native if Rollup insists
     ROLLUP_SKIP_NODEJS_NATIVE = '1'
   }
 
