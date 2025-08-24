@@ -10,8 +10,8 @@ pipeline {
     GH_EMAIL  = 'jenkins-bot@example.com'
     NVM_DIR   = "${WORKSPACE}/.nvm"
     NODE_VER  = '20'
-    ROLLUP_SKIP_NODEJS_NATIVE = '1'   // 👈 key line
-  CI = 'true'
+    CI        = 'true'
+    ROLLUP_SKIP_NODEJS_NATIVE = '1'   // prefer Rollup's JS build on ARM
   }
 
   stages {
@@ -52,7 +52,16 @@ pipeline {
           set -e
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
-          npm ci
+
+          # Be extra-safe on CI: skip all optional deps (avoids Rollup native binary)
+          echo "optional=false" > .npmrc
+
+          # Deterministic install; fallback to clean install if npm ci hits the optional-deps bug
+          ROLLUP_SKIP_NODEJS_NATIVE=1 npm ci || {
+            echo "npm ci failed — cleaning lock & node_modules due to Rollup optional dep bug"
+            rm -rf node_modules package-lock.json
+            ROLLUP_SKIP_NODEJS_NATIVE=1 npm install
+          }
         '''
       }
     }
@@ -63,9 +72,11 @@ pipeline {
           set -e
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
-          export VITE_APP_VERSION=$GIT_COMMIT
-          npm run build
-          # vite.config.ts uses outDir: "build"
+
+          # Ensure Rollup uses pure JS implementation during build
+          ROLLUP_SKIP_NODEJS_NATIVE=1 VITE_APP_VERSION=$GIT_COMMIT npm run build
+
+          # Your vite.config.ts uses outDir: "build" — add SPA fallback for client-side routes
           cp build/index.html build/404.html
         '''
       }
