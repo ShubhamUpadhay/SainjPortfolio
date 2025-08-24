@@ -11,7 +11,6 @@ pipeline {
     NVM_DIR   = "${WORKSPACE}/.nvm"
     NODE_VER  = '20'
     CI        = 'true'
-    ROLLUP_SKIP_NODEJS_NATIVE = '1'   // prefer Rollup's JS build on ARM
   }
 
   stages {
@@ -53,15 +52,25 @@ pipeline {
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
 
-          # Be extra-safe on CI: skip all optional deps (avoids Rollup native binary)
-          echo "optional=false" > .npmrc
+          # Ensure Rollup uses JS path by default
+          export ROLLUP_SKIP_NODEJS_NATIVE=1
+          echo "ROLLUP_SKIP_NODEJS_NATIVE=$ROLLUP_SKIP_NODEJS_NATIVE"
 
-          # Deterministic install; fallback to clean install if npm ci hits the optional-deps bug
-          ROLLUP_SKIP_NODEJS_NATIVE=1 npm ci || {
-            echo "npm ci failed — cleaning lock & node_modules due to Rollup optional dep bug"
+          # Deterministic install; if npm ci hits the optional-deps bug, clean & reinstall
+          npm ci || {
+            echo "npm ci failed — retry clean install"
             rm -rf node_modules package-lock.json
-            ROLLUP_SKIP_NODEJS_NATIVE=1 npm install
+            npm install
           }
+
+          # ARM fallback: if Rollup still tries native, install the platform binary explicitly
+          ARCH=$(node -p "process.arch")
+          if [ "$ARCH" = "arm64" ]; then
+            node -e "try{require('rollup');console.log('rollup import OK')}catch(e){process.exit(42)}" || {
+              echo "Installing @rollup/rollup-linux-arm64-gnu as fallback..."
+              npm i -D @rollup/rollup-linux-arm64-gnu@latest
+            }
+          fi
         '''
       }
     }
@@ -73,10 +82,13 @@ pipeline {
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
 
-          # Ensure Rollup uses pure JS implementation during build
-          ROLLUP_SKIP_NODEJS_NATIVE=1 VITE_APP_VERSION=$GIT_COMMIT npm run build
+          # Keep env for the exact build process
+          export ROLLUP_SKIP_NODEJS_NATIVE=1
+          echo "ROLLUP_SKIP_NODEJS_NATIVE=$ROLLUP_SKIP_NODEJS_NATIVE"
 
-          # Your vite.config.ts uses outDir: "build" — add SPA fallback for client-side routes
+          VITE_APP_VERSION=$GIT_COMMIT npm run build
+
+          # Your vite.config.ts uses outDir: "build" — add SPA fallback
           cp build/index.html build/404.html
         '''
       }
@@ -107,7 +119,7 @@ pipeline {
               git push -u origin gh-pages
             fi
 
-            # Copy built files (no rsync needed)
+            # Copy built files
             rm -rf "$WORKDIR"/*
             cp -a build/* "$WORKDIR"/
 
