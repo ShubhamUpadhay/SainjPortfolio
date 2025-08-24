@@ -11,15 +11,14 @@ pipeline {
     NVM_DIR   = "${WORKSPACE}/.nvm"
     NODE_VER  = '20'
     CI        = 'true'
-    // Force Rollup to use JS implementation (avoid native binary on ARM)
+    # Ask Rollup to prefer JS implementation; we still add native if Rollup insists
     ROLLUP_SKIP_NODEJS_NATIVE = '1'
   }
 
   stages {
     stage('Checkout') {
       steps {
-        checkout([
-          $class: 'GitSCM',
+        checkout([$class: 'GitSCM',
           branches: [[name: "*/${BRANCH}"]],
           userRemoteConfigs: [[url: "https://github.com/${REPO_SLUG}.git"]]
         ])
@@ -54,21 +53,32 @@ pipeline {
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
 
-          # Deterministic install; if npm ci stumbles, clean and reinstall
-          ROLLUP_SKIP_NODEJS_NATIVE=1 npm ci || {
+          # Prefer JS Rollup path during install
+          export ROLLUP_SKIP_NODEJS_NATIVE=1
+
+          # Deterministic install; clean fallback if needed
+          npm ci || {
             echo "npm ci failed — retrying with clean install"
             rm -rf node_modules package-lock.json
-            ROLLUP_SKIP_NODEJS_NATIVE=1 npm install
+            npm install
           }
 
-          # Ensure SWC native binding exists on linux/arm64 (Debian/Ubuntu -> gnu libc)
+          # ---- ARM64 Sanity for Rollup native binding ----
           ARCH=$(node -p "process.arch")
           PLAT=$(node -p "process.platform")
           if [ "$PLAT" = "linux" ] && [ "$ARCH" = "arm64" ]; then
-            node -e "require('@swc/core'); console.log('swc ok')" || {
-              echo "Installing @swc/core-linux-arm64-gnu fallback..."
+            # If Rollup's native loader complains, add the platform package explicitly
+            node -e "try{require('rollup');console.log('rollup import OK')}catch(e){process.exit(42)}" || {
+              echo "Installing Rollup ARM64 GNU binary..."
+              npm i -D @rollup/rollup-linux-arm64-gnu@latest
+              # verify again
+              node -e "require('rollup');console.log('rollup import OK after install')"
+            }
+            # SWC native binding (for @vitejs/plugin-react-swc)
+            node -e "try{require('@swc/core');console.log('swc ok')}catch(e){process.exit(42)}" || {
+              echo "Installing @swc/core-linux-arm64-gnu..."
               npm i -D @swc/core-linux-arm64-gnu@latest
-              node -e "require('@swc/core'); console.log('swc ok after install')"
+              node -e "require('@swc/core');console.log('swc ok after install')"
             }
           fi
         '''
@@ -82,10 +92,11 @@ pipeline {
           . "$NVM_DIR/nvm.sh"
           nvm use ${NODE_VER}
 
-          # Keep Rollup in JS mode during build
-          ROLLUP_SKIP_NODEJS_NATIVE=1 VITE_APP_VERSION=$GIT_COMMIT npm run build
+          # Keep Rollup in JS mode if possible; native is present if we added it above
+          export ROLLUP_SKIP_NODEJS_NATIVE=1
+          VITE_APP_VERSION=$GIT_COMMIT npm run build
 
-          # Your vite.config.ts uses outDir: "build" — add SPA fallback
+          # outDir is "build" in your vite.config.ts -> add SPA fallback
           cp build/index.html build/404.html
         '''
       }
@@ -101,7 +112,6 @@ pipeline {
             git config --global user.name  "${GH_NAME}"
             git config --global user.email "${GH_EMAIL}"
 
-            # Clone gh-pages or initialize it
             if git clone --depth 1 --branch gh-pages \
               https://${GH_PAT}@github.com/${REPO_SLUG}.git "$WORKDIR"; then
               echo "Cloned gh-pages"
@@ -116,7 +126,6 @@ pipeline {
               git push -u origin gh-pages
             fi
 
-            # Copy built files
             rm -rf "$WORKDIR"/*
             cp -a build/* "$WORKDIR"/
 
