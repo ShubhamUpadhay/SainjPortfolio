@@ -34,7 +34,7 @@ export function Hero() {
   return (
     <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-all duration-500 relative overflow-hidden min-h-screen flex items-center">
       {/* Animated particles background */}
-      <AnimatedParticles isDark={theme === "dark"} />
+      {/* <AnimatedParticles isDark={theme === "dark"} /> */}
 
       {/* Professional gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3"></div>
