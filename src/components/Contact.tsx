@@ -89,7 +89,7 @@ export function Contact() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Expertise Showcase */}
           <div className="space-y-8">
-            <Card className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 bg-gradient-to-br from-card via-card to-primary/5 dark:to-primary/10 border border-primary/10 dark:border-primary/20">
+            <Card className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="flex items-center">
                   <Target className="h-5 w-5 mr-2 text-primary" />
@@ -120,7 +120,7 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 bg-gradient-to-br from-card via-card to-secondary/10 dark:to-secondary/5 border border-primary/10 dark:border-primary/20">
+            <Card className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="flex items-center">
                   <Calendar className="h-5 w-5 mr-2 text-primary" />
@@ -160,7 +160,7 @@ export function Contact() {
 
           {/* Contact Information & Achievements */}
           <div className="space-y-8">
-            <Card className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 bg-gradient-to-br from-card via-card to-accent/10 dark:to-accent/5 border border-primary/10 dark:border-primary/20">
+            <Card className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
               <CardHeader className="p-0 mb-6">
                 <CardTitle>Contact Information</CardTitle>
               </CardHeader>
@@ -193,7 +193,7 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 bg-gradient-to-br from-card via-card to-primary/5 dark:to-primary/10 border border-primary/10 dark:border-primary/20">
+            <Card className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="flex items-center">
                   <Award className="h-5 w-5 mr-2 text-primary" />
@@ -219,7 +219,7 @@ export function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 bg-gradient-to-br from-card via-card to-secondary/10 dark:to-secondary/5 border border-primary/10 dark:border-primary/20">
+            <Card className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
               <CardHeader className="p-0 mb-4">
                 <CardTitle>Service Areas</CardTitle>
               </CardHeader>
@@ -252,7 +252,7 @@ export function Contact() {
         </div>
 
         <div className="text-center mt-12">
-          <div className="bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/15 dark:from-accent/5 dark:via-primary/10 dark:to-secondary/8 rounded-2xl p-8 transition-all duration-500 border border-primary/10 dark:border-primary/20 relative overflow-hidden">
+          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500 relative overflow-hidden">
             {/* Decorative gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 dark:from-primary/10 dark:to-secondary/10"></div>
             

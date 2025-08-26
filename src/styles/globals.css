@@ -150,12 +150,124 @@
     }
   }
 
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-100vh) translateX(0px);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) translateX(100px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes sparkle {
+    0%, 100% {
+      transform: translateY(0px) scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-20px) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes float-gentle {
+    0%, 100% {
+      transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+      transform: translate(15px, -8px) rotate(90deg);
+    }
+    50% {
+      transform: translate(8px, -15px) rotate(180deg);
+    }
+    75% {
+      transform: translate(-8px, 8px) rotate(270deg);
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      opacity: 0.8;
+      transform: scale(1.1) rotate(90deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.3) rotate(180deg);
+    }
+    75% {
+      opacity: 0.8;
+      transform: scale(1.1) rotate(270deg);
+    }
+  }
+
   .animate-subtle-float {
     animation: subtle-float 8s ease-in-out infinite;
   }
 
   .animate-gentle-fade {
     animation: gentle-fade 6s ease-in-out infinite;
+  }
+
+  .animate-snowfall {
+    animation: snowfall linear infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 3s ease-in-out infinite;
+  }
+
+  .animate-float-gentle {
+    animation: float-gentle 8s ease-in-out infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  /* Glass effect utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .dark .glass-header {
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 

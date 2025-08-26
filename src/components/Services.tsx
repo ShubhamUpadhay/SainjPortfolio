@@ -116,7 +116,7 @@ export function Services() {
                 {category.services.map((service, serviceIndex) => {
                   const Icon = service.icon;
                   return (
-                    <Card key={serviceIndex} className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 bg-gradient-to-br from-card via-card to-primary/5 dark:to-primary/10 border border-primary/10 dark:border-primary/20">
+                    <Card key={serviceIndex} className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                       <CardHeader className="p-0 mb-6">
                         <div className="flex items-start space-x-4 mb-4">
                           <div className="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300">
@@ -149,7 +149,7 @@ export function Services() {
         </div>
 
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-br from-primary/5 via-accent/10 to-secondary/15 dark:from-primary/10 dark:via-accent/5 dark:to-secondary/8 rounded-2xl p-8 transition-all duration-500 border border-primary/10 dark:border-primary/20">
+          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500">
             <h3 className="text-xl mb-4">Ready to Secure Your Organization?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Get started with a comprehensive assessment tailored to your specific needs and 

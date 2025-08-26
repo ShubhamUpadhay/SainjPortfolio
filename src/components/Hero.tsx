@@ -1,8 +1,12 @@
 import { Button } from "./ui/button";
 import { ArrowRight, Shield, Award, Users } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { AnimatedParticles } from "./AnimatedParticles";
+import { useTheme } from "./ThemeProvider";
 
 export function Hero() {
+  const { theme } = useTheme();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -29,9 +33,18 @@ export function Hero() {
   ];
 
   return (
-    <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-all duration-500 relative overflow-hidden">
+    <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-all duration-500 relative overflow-hidden min-h-screen flex items-center">
+      {/* Animated particles background */}
+      <AnimatedParticles isDark={theme === "dark"} />
+
       {/* Professional gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3"></div>
+
+      {/* Additional atmospheric effects for hero */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-secondary/15 dark:from-primary/5 dark:to-secondary/8 rounded-full blur-3xl opacity-30 animate-subtle-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-tl from-secondary/10 to-accent/15 dark:from-secondary/5 dark:to-accent/8 rounded-full blur-3xl opacity-40 animate-gentle-fade"></div>
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -53,7 +66,7 @@ export function Hero() {
               <Button
                 onClick={() => scrollToSection("services")}
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto glass hover:scale-105 transition-all duration-300"
               >
                 View Services
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -62,7 +75,7 @@ export function Hero() {
                 onClick={() => scrollToSection("contact")}
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto glass hover:scale-105 transition-all duration-300"
               >
                 Get in Touch
               </Button>
@@ -75,9 +88,9 @@ export function Hero() {
                 return (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-card via-card to-primary/5 dark:to-primary/10 rounded-xl p-4 border border-primary/10 dark:border-primary/20 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300 text-center"
+                    className="glass-card rounded-xl p-4 hover:scale-105 transition-all duration-300 text-center group"
                   >
-                    <div className="w-8 h-8 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <div className="w-8 h-8 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="h-4 w-4 text-primary" />
                     </div>
                     <div className="font-medium text-sm">
@@ -92,21 +105,25 @@ export function Hero() {
             </div>
 
             {/* Key Statistics */}
-            <div className="flex items-center space-x-8 pt-4">
-              <div className="text-center">
-                <div className="text-2xl font-medium">500+</div>
-                <div className="text-sm text-muted-foreground">
-                  Audits Completed
+            <div className="glass-card rounded-xl p-6">
+              <div className="flex items-center justify-around">
+                <div className="text-center group hover:scale-105 transition-transform duration-300">
+                  <div className="text-2xl font-medium">500+</div>
+                  <div className="text-sm text-muted-foreground">
+                    Audits Completed
+                  </div>
                 </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-medium">50+</div>
-                <div className="text-sm text-muted-foreground">Legal Cases</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-medium">98%</div>
-                <div className="text-sm text-muted-foreground">
-                  Client Satisfaction
+                <div className="text-center group hover:scale-105 transition-transform duration-300">
+                  <div className="text-2xl font-medium">50+</div>
+                  <div className="text-sm text-muted-foreground">
+                    Legal Cases
+                  </div>
+                </div>
+                <div className="text-center group hover:scale-105 transition-transform duration-300">
+                  <div className="text-2xl font-medium">98%</div>
+                  <div className="text-sm text-muted-foreground">
+                    Client Satisfaction
+                  </div>
                 </div>
               </div>
             </div>
@@ -115,16 +132,20 @@ export function Hero() {
           {/* Profile Image Side */}
           <div className="lg:order-2">
             <div className="relative max-w-md mx-auto">
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1576558656222-ba66febe3dec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMGJ1c2luZXNzfGVufDF8fHx8MTc1NTc5MjgzMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Sainjali Nayak - IT Auditor and Legal Advisor"
+              <div className="glass-card aspect-square rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-500">
+                <img
+                  src="main.jpeg"
+                  alt="Sarah Mitchell - IT Auditor and Legal Advisor"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground rounded-xl p-4 shadow-lg dark:shadow-primary/20 transition-shadow duration-300">
-                <div className="text-sm">Certified</div>
-                <div className="font-medium">CISA & JD</div>
+              <div className="absolute -bottom-6 -right-6 glass rounded-xl p-4 shadow-lg hover:scale-110 transition-all duration-300 group">
+                <div className="text-sm group-hover:text-primary transition-colors duration-300">
+                  Certified
+                </div>
+                <div className="font-medium group-hover:text-primary transition-colors duration-300">
+                  CISA & JD
+                </div>
               </div>
             </div>
           </div>

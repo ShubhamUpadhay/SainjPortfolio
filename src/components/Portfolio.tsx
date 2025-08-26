@@ -103,7 +103,7 @@ export function Portfolio() {
           {caseStudies.map((study, index) => {
             const Icon = study.icon;
             return (
-              <Card key={index} className="p-6 hover:shadow-lg dark:hover:shadow-primary/10 transition-all duration-300">
+              <Card key={index} className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
                 <CardHeader className="p-0 mb-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center transition-colors duration-300">
@@ -158,7 +158,7 @@ export function Portfolio() {
         </div>
 
         <div className="text-center mt-12">
-          <div className="bg-gradient-to-br from-secondary/10 via-primary/5 to-accent/15 dark:from-secondary/5 dark:via-primary/10 dark:to-accent/8 rounded-2xl p-8 transition-all duration-500 border border-primary/10 dark:border-primary/20">
+          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500">
             <h3 className="text-xl mb-4">Interested in Similar Results?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               These case studies represent just a sample of successful engagements. Each project is 
