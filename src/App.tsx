@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { Suspense, lazy } from "react";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Header } from "./components/Header";

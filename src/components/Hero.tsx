@@ -31,7 +31,6 @@ export function Hero() {
       subtitle: "Experience",
     },
   ];
-
   return (
     <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-all duration-500 relative overflow-hidden min-h-screen flex items-center">
       {/* Animated particles background */}
@@ -133,11 +132,30 @@ export function Hero() {
           <div className="lg:order-2">
             <div className="relative max-w-md mx-auto">
               <div className="glass-card aspect-square rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-500">
-                <img
-                  src="main.jpeg"
-                  alt="Sarah Mitchell - IT Auditor and Legal Advisor"
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`$main-640.avif 640w, main-1024.avif 1024w, main-1600.avif 1600w`}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`main-640.webp 640w, main-1024.webp 1024w, main-1600.webp 1600w`}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                  />
+                  <img
+                    src={`main-1024.jpg`} // fallback
+                    srcSet={`main-640.jpg 640w, main-1024.jpg 1024w, main-1600.jpg 1600w`}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                    alt="Sarah Mitchell - IT Auditor and Legal Advisor"
+                    width={1200}
+                    height={700} // <-- set to your real aspect ratio (see script output)
+                    className="w-full h-auto object-cover rounded-xl"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                  />
+                </picture>
               </div>
               <div className="absolute -bottom-6 -right-6 glass rounded-xl p-4 shadow-lg hover:scale-110 transition-all duration-300 group">
                 <div className="text-sm group-hover:text-primary transition-colors duration-300">
