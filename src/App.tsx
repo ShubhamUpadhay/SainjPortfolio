@@ -45,9 +45,7 @@ export default function App() {
         <div className="relative z-10">
           <Header />
           <main className="relative z-20">
-            {/* eager hero so buttons stay responsive through theme flips */}
             <Hero />
-
             {/* below-the-fold sections load on approach */}
             <SectionLoader>
               <Suspense fallback={Fallback}>
