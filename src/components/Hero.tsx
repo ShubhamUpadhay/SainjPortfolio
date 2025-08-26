@@ -32,12 +32,12 @@ export function Hero() {
     },
   ];
   return (
-    <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-all duration-500 relative overflow-hidden min-h-screen flex items-center">
+    <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-colors duration-300 relative overflow-hidden min-h-screen flex items-center">
       {/* Animated particles background */}
-      {/* <AnimatedParticles isDark={theme === "dark"} /> */}
+      <AnimatedParticles isDark={theme === "dark"} />
 
       {/* Professional gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3 pointer-events-none z-0"></div>
 
       {/* Additional atmospheric effects for hero */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -65,7 +65,7 @@ export function Hero() {
               <Button
                 onClick={() => scrollToSection("services")}
                 size="lg"
-                className="w-full sm:w-auto glass hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto glass hover:scale-105 transition-transform duration-300"
               >
                 View Services
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -74,7 +74,7 @@ export function Hero() {
                 onClick={() => scrollToSection("contact")}
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto glass hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto glass hover:scale-105 transition-transform duration-300"
               >
                 Get in Touch
               </Button>
