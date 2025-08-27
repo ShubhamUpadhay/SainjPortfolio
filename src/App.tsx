@@ -52,11 +52,11 @@ export default function App() {
               </Suspense>
             </SectionLoader>
 
-            <SectionLoader>
-              <Suspense fallback={Fallback}>
-                <Services />
-              </Suspense>
-            </SectionLoader>
+            {/* <SectionLoader>
+              <Suspense fallback={Fallback}> */}
+            <Services />
+            {/* </Suspense>
+            </SectionLoader> */}
 
             <SectionLoader>
               <Suspense fallback={Fallback}>
@@ -70,11 +70,11 @@ export default function App() {
               </Suspense>
             </SectionLoader>
 
-            <SectionLoader>
-              <Suspense fallback={Fallback}>
-                <Contact />
-              </Suspense>
-            </SectionLoader>
+            {/* <SectionLoader> */}
+            <Suspense fallback={Fallback}>
+              <Contact />
+            </Suspense>
+            {/* </SectionLoader> */}
           </main>
 
           <SectionLoader>

@@ -78,6 +78,13 @@ export function Hero() {
               >
                 Get in Touch
               </Button>
+              <Button
+                onClick={() => alert("Alert button clicked!")}
+                size="lg"
+                className="w-full sm:w-auto glass hover:scale-105 transition-transform duration-300"
+              >
+                alert button n
+              </Button>
             </div>
 
             {/* Professional Credentials */}
