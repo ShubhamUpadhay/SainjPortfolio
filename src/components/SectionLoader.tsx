@@ -5,27 +5,42 @@ export default function SectionLoader({
 }: {
   children: React.ReactNode;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const el = ref.current!;
+    if (show) return; // already visible
+    if (typeof window === "undefined") return;
+
+    const el = ref.current;
+    if (!el) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setShow(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
+        for (const e of entries) {
           if (e.isIntersecting) {
             setShow(true);
-            obs.disconnect(); // load once
+            obs.disconnect();
+            break;
           }
-        });
+        }
       },
-      { rootMargin: "400px" } // start loading a bit before visible
+      {
+        root: null,
+        rootMargin: "300px 0px",
+        threshold: 0.01,
+      }
     );
+
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [show]);
 
-  // reserve some height before it loads so layout doesn't jump
   return (
     <div ref={ref}>{show ? children : <div style={{ minHeight: 240 }} />}</div>
   );

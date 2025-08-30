@@ -3,6 +3,8 @@ import { ArrowRight, Shield, Award, Users } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { AnimatedParticles } from "./AnimatedParticles";
 import { useTheme } from "./ThemeProvider";
+import { Img } from "./ui/img";
+import { ScrollLink } from "./ui/scrollLink";
 
 export function Hero() {
   const { theme } = useTheme();
@@ -60,7 +62,7 @@ export function Hero() {
                 compliance.
               </p>
             </div>
-
+            {/* 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 onClick={() => scrollToSection("services")}
@@ -85,6 +87,23 @@ export function Hero() {
               >
                 alert button n
               </Button>
+            </div> */}
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <ScrollLink targetId="contact" variant="default" size="lg">
+                Get in touch
+              </ScrollLink>
+
+              <ScrollLink
+                targetId="services"
+                variant="outline"
+                size="lg"
+                replaceHash
+              >
+                View services
+              </ScrollLink>
+
+              {/* Your alert button can stay as-is */}
+              <Button onClick={() => alert("Hi!")}>Alert</Button>
             </div>
 
             {/* Professional Credentials */}
@@ -150,17 +169,14 @@ export function Hero() {
                     srcSet={`main-640.webp 640w, main-1024.webp 1024w, main-1600.webp 1600w`}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
                   />
-                  <img
+                  <Img
+                    highPriority
                     src={`main-1024.jpg`} // fallback
                     srcSet={`main-640.jpg 640w, main-1024.jpg 1024w, main-1600.jpg 1600w`}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
-                    alt="Sarah Mitchell - IT Auditor and Legal Advisor"
-                    width={1200}
-                    height={700} // <-- set to your real aspect ratio (see script output)
-                    className="w-full h-auto object-cover rounded-xl"
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
+                    alt="Sainjali Nayak – IT Audit & Risk Professional"
+                    className="mx-auto max-w-lg rounded-2xl shadow-lg"
+                    decoding
                   />
                 </picture>
               </div>
