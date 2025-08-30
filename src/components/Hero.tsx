@@ -90,7 +90,7 @@ export function Hero() {
             </div> */}
             <div className="mt-8 flex items-center justify-center gap-3">
               <ScrollLink targetId="contact" variant="default" size="lg">
-                Get in touch now
+                Get in touch no
               </ScrollLink>
 
               <ScrollLink
