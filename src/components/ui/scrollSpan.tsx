@@ -1,4 +1,3 @@
-// src/components/ui/ScrollSpan.tsx
 import * as React from "react";
 
 type Props = React.HTMLAttributes<HTMLSpanElement> & {
@@ -35,9 +34,7 @@ export function ScrollSpan({
       tabIndex={0}
       onClick={onClick}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          onClick(e as any);
-        }
+        if (e.key === "Enter" || e.key === " ") onClick(e as any);
       }}
       style={{ cursor: "pointer" }}
     >
@@ -45,3 +42,5 @@ export function ScrollSpan({
     </span>
   );
 }
+
+export default ScrollSpan;

@@ -3,7 +3,6 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { ScrollSpan } from "./ui/ScrollSpan";
-
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
