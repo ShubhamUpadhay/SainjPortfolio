@@ -5,40 +5,48 @@ export function About() {
   const achievements = [
     {
       icon: Shield,
-      title: "Cybersecurity Expert",
-      description: "Specialized in security audits and compliance frameworks"
+      title: "Cybersecurity & Risk Expert",
+      description:
+        "Specialized in ITGC, SOX, Vulnerability Management, Incident Response, and Threat Intelligence.",
     },
     {
       icon: Scale,
-      title: "Legal Expertise",
-      description: "Technology law, data privacy, and regulatory compliance"
+      title: "Legal & Privacy Expertise",
+      description:
+        "LL.B. in Cyber & IT Law | Skilled in Data Privacy, GDPR, CCPA, HIPAA & Regulatory Compliance.",
     },
     {
       icon: Award,
       title: "Industry Recognition",
-      description: "CISA certified with JD in Technology Law"
+      description:
+        "🏆 PwC Supernova Award | 🏆 HSBC Rising Star Award for Risk & Compliance Excellence.",
     },
     {
       icon: Users,
-      title: "Client Focus",
-      description: "Dedicated to protecting organizations and their stakeholders"
-    }
+      title: "Global Client Engagement",
+      description:
+        "Audited and advised BFSI, Healthcare, Media, Retail & Govt. organizations across the US & India.",
+    },
   ];
 
   return (
-    <section id="about" className="py-16 bg-gradient-to-b from-secondary/10 via-background to-accent/5 dark:from-secondary/5 dark:via-background dark:to-accent/10 transition-all duration-500 relative overflow-hidden">
+    <section
+      id="about"
+      className="py-16 bg-gradient-to-b from-secondary/10 via-background to-accent/5 dark:from-secondary/5 dark:via-background dark:to-accent/10 transition-all duration-500 relative overflow-hidden"
+    >
       {/* Professional background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle gradient accent */}
         <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl mb-4">About Sarah Mitchell</h2>
+          <h2 className="text-3xl mb-4">About Sainjali Nayak</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A unique blend of technical expertise and legal acumen, dedicated to helping 
-            organizations navigate the complex intersection of technology and compliance.
+            A unique blend of IT auditing expertise and legal acumen in Cyber &
+            IT Law, dedicated to helping organizations strengthen cybersecurity,
+            achieve compliance, and manage risk effectively.
           </p>
         </div>
 
@@ -47,23 +55,50 @@ export function About() {
             <div>
               <h3 className="text-xl mb-3">Professional Background</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                With over a decade of experience in IT auditing and a Juris Doctor in Technology Law, 
-                I bring a comprehensive understanding of both the technical and legal challenges 
-                facing modern organizations.
+                With experience spanning PwC, HSBC, and University of Virginia,
+                I’ve led ITGC, SOX, GRC, and data privacy audits across
+                industries such as Banking & Finance, Healthcare, Media, Retail,
+                and Government.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                My practice focuses on helping businesses achieve and maintain compliance while 
-                implementing robust cybersecurity measures that protect against evolving threats 
-                and regulatory requirements.
+                • Recognized with PwC Supernova Award and HSBC Rising Star Award
+                for innovation in risk management and compliance.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                • Expertise in Identity & Access Management (IAM/PAM),
+                Vulnerability Management, Threat Monitoring, Risk Governance,
+                and Incident Response.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                • Strong foundation in Cyber & IT Law (LL.B.), enabling me to
+                connect technical audits with regulatory compliance.
               </p>
             </div>
 
             <div>
               <h3 className="text-xl mb-3">Approach</h3>
+              <p
+                className="text-muted-foreground leading-relaxed"
+                style={{ fontStyle: "italic" }}
+              >
+                <strong>
+                  I believe in proactive risk management — not just checking
+                  compliance boxes, but driving real value by:{" "}
+                </strong>
+              </p>
               <p className="text-muted-foreground leading-relaxed">
-                I believe in proactive risk management through thorough auditing, clear legal 
-                guidance, and practical solutions that align with business objectives. Every 
-                engagement is tailored to the specific needs and risk profile of the organization.
+                • Performing end-to-end audits (planning, walkthroughs, control
+                design reviews, testing, and reporting).
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {" "}
+                • Aligning solutions with global frameworks (ISO 27001, NIST,
+                PCI DSS, GDPR, HIPAA, COBIT, CIS Controls).
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {" "}
+                • Delivering practical, business-aligned strategies that reduce
+                risks, enhance resilience, and optimize compliance costs.
               </p>
             </div>
           </div>
@@ -72,13 +107,18 @@ export function About() {
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
-                <Card key={index} className="text-center p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
+                <Card
+                  key={index}
+                  className="text-center p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300"
+                >
                   <CardContent className="space-y-3 p-0">
                     <div className="mx-auto w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center transition-colors duration-300">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <h4 className="font-medium">{achievement.title}</h4>
-                    <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {achievement.description}
+                    </p>
                   </CardContent>
                 </Card>
               );
@@ -91,25 +131,27 @@ export function About() {
             <div>
               <h4 className="font-medium mb-2">Education</h4>
               <p className="text-sm text-muted-foreground">
-                Juris Doctor, Technology Law<br />
-                MS Computer Science<br />
-                CISA Certification
+                • LL.B. (Cyber & IT Law) <br />• B.Com (Honors in Risk &
+                Auditing)
               </p>
             </div>
             <div>
               <h4 className="font-medium mb-2">Specializations</h4>
               <p className="text-sm text-muted-foreground">
-                IT Risk Assessment<br />
-                Data Privacy Law<br />
-                Compliance Frameworks
+                • ITGC, SOX, and Compliance Audits <br />• Identity & Access
+                Management (IAM/PAM) <br />• Risk Assessment & GRC Frameworks
+                (ISO 27001, NIST, COBIT, CIS, PCI DSS, GDPR, HIPAA, CCPA) <br />
+                • Data Privacy & Regulatory Compliance <br />• Business
+                Continuity (BCP) & Disaster Recovery (DR) Strategies
               </p>
             </div>
             <div>
               <h4 className="font-medium mb-2">Industries</h4>
               <p className="text-sm text-muted-foreground">
-                Financial Services<br />
-                Healthcare<br />
-                Technology Sector
+                • Banking & Financial Services (BFSI) <br />• Healthcare &
+                Pharmaceuticals <br />• Media & Entertainment <br />• Retail &
+                E-Commerce <br />• Energy & Utility <br />• Government & Public
+                Sector
               </p>
             </div>
           </div>
