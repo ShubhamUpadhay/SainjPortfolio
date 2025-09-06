@@ -51,37 +51,10 @@ export function Hero() {
                 compliance.
               </p>
             </div>
-            {/* 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                onClick={() => scrollToSection("services")}
-                size="lg"
-                className="w-full sm:w-auto glass hover:scale-105 transition-transform duration-300"
-              >
-                View Services
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                onClick={() => scrollToSection("contact")}
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto glass hover:scale-105 transition-transform duration-300"
-              >
-                Get in Touch
-              </Button>
-              <Button
-                onClick={() => alert("Alert button clicked!")}
-                size="lg"
-                className="w-full sm:w-auto glass hover:scale-105 transition-transform duration-300"
-              >
-                alert button n
-              </Button>
-            </div> */}
             <div className="mt-8 flex items-center justify-center gap-3">
               <ScrollLink targetId="contact" variant="default" size="lg">
                 Get in touch no
               </ScrollLink>
-
               <ScrollLink
                 targetId="services"
                 variant="outline"
@@ -90,25 +63,6 @@ export function Hero() {
               >
                 View services
               </ScrollLink>
-              {/* <a
-                href="#contact"
-                className={cn(
-                  buttonVariants({ variant: "default", size: "lg" })
-                )}
-              >
-                Get in touch href
-              </a>
-              <a
-                href="#services"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" })
-                )}
-              >
-                View services href
-              </a> */}
-
-              {/* Your alert button can stay as-is */}
-              <Button onClick={() => alert("Hi!")}>Alert</Button>
             </div>
 
             {/* Professional Credentials */}
