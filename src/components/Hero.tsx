@@ -1,10 +1,11 @@
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { ArrowRight, Shield, Award, Users } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { AnimatedParticles } from "./AnimatedParticles";
 import { useTheme } from "./ThemeProvider";
 import { Img } from "./ui/img";
 import { ScrollLink } from "./ui/scrollLink";
+import { cn } from "./ui/utils";
 
 export function Hero() {
   const { theme } = useTheme();
@@ -101,6 +102,22 @@ export function Hero() {
               >
                 View services
               </ScrollLink>
+              <a
+                href="#contact"
+                className={cn(
+                  buttonVariants({ variant: "default", size: "lg" })
+                )}
+              >
+                Get in touch href
+              </a>
+              <a
+                href="#services"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" })
+                )}
+              >
+                View services href
+              </a>
 
               {/* Your alert button can stay as-is */}
               <Button onClick={() => alert("Hi!")}>Alert</Button>

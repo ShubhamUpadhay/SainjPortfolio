@@ -71,6 +71,17 @@
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (t === 'dark' || (!t && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) { }
+    })();
+  </script>
 </head>
 
 <body>
