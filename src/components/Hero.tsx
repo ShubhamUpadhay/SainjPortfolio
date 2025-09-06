@@ -35,10 +35,10 @@ export function Hero() {
     },
   ];
   return (
-    <section className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-colors duration-300 relative overflow-hidden min-h-screen flex items-center">
-      {/* Animated particles background */}
-      <AnimatedParticles isDark={theme === "dark"} />
-
+    <section
+      id="hero"
+      className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-colors duration-300 relative overflow-hidden min-h-screen flex items-center"
+    >
       {/* Professional gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3 pointer-events-none z-0"></div>
 
@@ -102,7 +102,7 @@ export function Hero() {
               >
                 View services
               </ScrollLink>
-              <a
+              {/* <a
                 href="#contact"
                 className={cn(
                   buttonVariants({ variant: "default", size: "lg" })
@@ -117,7 +117,7 @@ export function Hero() {
                 )}
               >
                 View services href
-              </a>
+              </a> */}
 
               {/* Your alert button can stay as-is */}
               <Button onClick={() => alert("Hi!")}>Alert</Button>
