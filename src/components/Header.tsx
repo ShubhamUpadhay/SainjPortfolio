@@ -33,7 +33,7 @@ export function Header() {
             </span>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigations */}
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("about")}
