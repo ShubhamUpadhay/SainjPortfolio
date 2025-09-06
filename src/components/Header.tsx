@@ -27,7 +27,7 @@ export function Header() {
               targetId="hero"
               className="text-xl font-medium text-foreground"
             >
-              Sarah Mitchell
+              Sainjali Nayak
             </ScrollSpan>
             <span className="ml-2 text-sm text-muted-foreground">
               IT Auditor & Legal Advisor

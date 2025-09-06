@@ -8,18 +8,18 @@ export function Hero() {
   const credentials = [
     {
       icon: Shield,
-      title: "CISA Certified",
-      subtitle: "IT Auditor",
+      title: "CISA Trained",
+      subtitle: "IT Audit & Risk Professional",
     },
     {
       icon: Award,
-      title: "Juris Doctor",
-      subtitle: "Technology Law",
+      title: "LL.B. in Cyber & IT Law",
+      subtitle: "Symbiosis Law College, Pune",
     },
     {
       icon: Users,
-      title: "10+ Years",
-      subtitle: "Experience",
+      title: "Global Experience",
+      subtitle: "PwC, HSBC, University of Virginia",
     },
   ];
   return (
@@ -42,18 +42,20 @@ export function Hero() {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl lg:text-5xl tracking-tight">
-                Expert IT Auditing & Legal Consultation
+                IT Auditor, Risk & Compliance Specialist with a Legal Edge
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Bridging the gap between technology and compliance with
-                comprehensive IT auditing services and specialized legal
-                expertise in cybersecurity, data protection, and regulatory
-                compliance.
+                I bridge the worlds of technology, risk, and law to help
+                organizations stay secure, compliant, and resilient. With
+                expertise in ITGC, SOX, ISO 27001, Data Privacy, GRC frameworks,
+                and Cyber & IT Law, I’ve led high-impact audits and risk
+                programs across industries — from global banks and healthcare
+                leaders to media, retail, and government enterprises.{" "}
               </p>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-3">
+            <div className="mt-8 flex items-center justify-start gap-3">
               <ScrollLink targetId="contact" variant="default" size="lg">
-                Get in touch no
+                Get in touch
               </ScrollLink>
               <ScrollLink
                 targetId="services"
@@ -92,21 +94,22 @@ export function Hero() {
             <div className="glass-card rounded-xl p-6">
               <div className="flex items-center justify-around">
                 <div className="text-center group hover:scale-105 transition-transform duration-300">
-                  <div className="text-2xl font-medium">500+</div>
+                  <div className="text-xl font-medium">25+</div>
                   <div className="text-sm text-muted-foreground">
-                    Audits Completed
+                    Certifications
                   </div>
                 </div>
                 <div className="text-center group hover:scale-105 transition-transform duration-300">
-                  <div className="text-2xl font-medium">50+</div>
+                  <div className="text-xl font-medium">500+</div>
                   <div className="text-sm text-muted-foreground">
-                    Legal Cases
+                    Controls Tested
                   </div>
                 </div>
                 <div className="text-center group hover:scale-105 transition-transform duration-300">
-                  <div className="text-2xl font-medium">98%</div>
+                  <div className="text-xl font-medium">100+</div>
                   <div className="text-sm text-muted-foreground">
-                    Client Satisfaction
+                    Risk Assessments
+                    <br /> & Audits
                   </div>
                 </div>
               </div>
@@ -141,10 +144,10 @@ export function Hero() {
               </div>
               <div className="absolute -bottom-6 -right-6 glass rounded-xl p-4 shadow-lg hover:scale-110 transition-all duration-300 group">
                 <div className="text-sm group-hover:text-primary transition-colors duration-300">
-                  Certified
+                  Winning Auditor
                 </div>
                 <div className="font-medium group-hover:text-primary transition-colors duration-300">
-                  CISA & JD
+                  PwC & HSBC Award
                 </div>
               </div>
             </div>
