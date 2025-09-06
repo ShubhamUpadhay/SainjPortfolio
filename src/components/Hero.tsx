@@ -1,22 +1,10 @@
-import { Button, buttonVariants } from "./ui/button";
-import { ArrowRight, Shield, Award, Users } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { AnimatedParticles } from "./AnimatedParticles";
+import { Award, Shield, Users } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { Button } from "./ui/button";
 import { Img } from "./ui/img";
 import { ScrollLink } from "./ui/scrollLink";
-import { cn } from "./ui/utils";
 
 export function Hero() {
-  const { theme } = useTheme();
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const credentials = [
     {
       icon: Shield,
