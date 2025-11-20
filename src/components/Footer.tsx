@@ -197,12 +197,12 @@ export function Footer() {
           <div className="text-sm text-primary-foreground/60">
             © 2025{" "}
             <a
-              href="https://www.linkedin.com/in/sainjali-nayak-1b1336271"
+              href="https://www.linkedin.com/company/98856202/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
-              <span className="text-sm">SainjPortfolio</span>
+              <span className="text-sm">BrahamAstr</span>
               <ExternalLink className="h-3 w-3" />
             </a>{" "}
             . All rights reserved.
