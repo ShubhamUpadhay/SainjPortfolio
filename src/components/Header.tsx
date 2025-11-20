@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { ScrollSpan } from "./ui/ScrollSpan";
+import BrandTagline from "./BrandTagline";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -31,7 +32,6 @@ export function Header() {
               IT Auditor & Legal Advisor
             </span>
           </div>
-
           {/* Desktop Navigations */}
           <div className="hidden md:flex items-center space-x-8">
             <button

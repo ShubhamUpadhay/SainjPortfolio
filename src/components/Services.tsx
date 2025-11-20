@@ -1,133 +1,134 @@
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
 import {
-  Shield,
-  FileCheck,
-  Scale,
-  Lock,
-  Search,
   AlertTriangle,
-  CheckCircle,
-  FileText,
   ArrowRight,
+  CheckCircle,
+  FileCheck,
+  FileText,
+  Landmark,
+  Lock,
+  Scale,
+  Search,
+  Shield,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 export function Services() {
   const services = [
     {
       category: "IT Auditing Services",
-      description:
-        "Comprehensive cybersecurity and compliance assessments to protect your organization.",
+      description: `Comprehensive cybersecurity, risk, and compliance assessments designed to <b>protect your organization, ensure adherence to global frameworks, and enhance governance effectiveness</b>.`,
       services: [
         {
           icon: Shield,
           title: "Security Risk Assessments",
-          description:
-            "Comprehensive evaluation of cybersecurity posture and risk exposure",
+          description: `Comprehensive evaluation of <b>cybersecurity posture, control maturity, and enterprise risk exposure</b>.`,
           features: [
-            "Threat Analysis",
-            "Vulnerability Scanning",
-            "Risk Prioritization",
-            "Remediation Planning",
+            "<b>Threat Identification & Quantification (FAIR, NIST RMF)</b>",
+            "<b>Control Design & Operating Effectiveness (TOD/TOE)</b>",
+            "<b>Risk Prioritization & Remediation Planning</b>",
+            "<b>Regulatory Alignment with ISO 27001 / NIST 800-53 / CIS Benchmarks</b>",
           ],
         },
         {
           icon: FileCheck,
           title: "Compliance Audits",
-          description:
-            "SOX, HIPAA, PCI-DSS, and other regulatory compliance assessments",
+          description: `End-to-end audits validating conformance with <b>SOX, ISO 27001, HIPAA, PCI DSS, GDPR, and CCPA frameworks</b>.`,
           features: [
-            "Regulatory Mapping",
-            "Gap Analysis",
-            "Control Testing",
-            "Compliance Reporting",
+            "<b>Regulatory & Policy Mapping (COBIT, COSO)</b>",
+            "<b>Control Testing & Evidence Review</b>",
+            "<b>Gap Identification and Remediation Tracking</b>",
+            "<b>Automated Compliance Reporting via GRC tools (MetricStream, NAVEX Global, LogicGate)</b>",
           ],
         },
         {
           icon: Search,
           title: "Vulnerability Assessments",
-          description:
-            "Identification and analysis of security vulnerabilities in IT infrastructure",
+          description: `Identification, analysis, and prioritization of <b>security weaknesses in IT infrastructure, applications, and endpoints</b>.`,
           features: [
-            "Network Scanning",
-            "Application Testing",
-            "Configuration Review",
-            "Patch Management",
+            "<b>Continuous Vulnerability Scanning & Patch Management (Tenable VMP)</b>",
+            "<b>Network & Configuration Review</b>",
+            "<b>Application Security Testing and Code Integrity Checks</b>",
+            "<b>Integration with Endpoint Security Tools (Intune, Defender)</b>",
           ],
         },
         {
           icon: AlertTriangle,
           title: "Incident Response Planning",
-          description:
-            "Development and testing of cybersecurity incident response procedures",
+          description: `Development and testing of <b>cybersecurity incident response and crisis management playbooks</b>.`,
           features: [
-            "Response Planning",
-            "Team Training",
-            "Simulation Testing",
-            "Documentation",
+            "<b>Response Strategy & Escalation Workflow Design</b>",
+            "<b>Simulation Testing and Table-Top Exercises</b>",
+            "<b>Team Training & Crisis Communication Drills</b>",
+            "<b>Post-Incident Analysis and Root-Cause Documentation</b>",
+          ],
+        },
+        {
+          icon: Landmark,
+          title: "Data Privacy & GRC Advisory",
+          description: `Strategic guidance to help organizations comply with global privacy laws and strengthen governance, risk, and compliance (GRC) programs.`,
+          features: [
+            "<b>Privacy Impact Assessments (PIA) & Data Flow Mapping</b>",
+            "<b>GDPR, CCPA, HIPAA & IT Act Compliance Implementation</b>",
+            "<b>Policy Development & Privacy-by-Design Integration</b>",
+            "<b>Enterprise Risk Governance aligned with ISO 27005 & NIST RMF</b>",
+            "<b>Third-Party Risk Management (TPRM) & Vendor Compliance Reviews</b>",
           ],
         },
       ],
     },
     {
-      category: "Legal Services",
-      description:
-        "Specialized legal expertise in technology law and regulatory compliance.",
+      category: "Legal & Compliance Advisory",
+      description: `Specialized <b>legal and regulatory consulting</b> focused on bridging technology law with cybersecurity and data governance frameworks.`,
       services: [
         {
           icon: Scale,
           title: "Technology Law Consultation",
-          description:
-            "Legal guidance on technology contracts, licensing, and intellectual property",
+          description: `Strategic <b>legal guidance</b> for technology contracts, intellectual property, and software licensing under Cyber & IT Law.`,
           features: [
-            "Contract Review",
-            "IP Protection",
-            "Licensing Agreements",
-            "Dispute Resolution",
+            "<b>Contract Drafting & Review (SaaS, Procurement, IP Licensing)</b>",
+            "<b>Technology Risk Clauses & Legal Compliance Audits</b>",
+            "<b>Software & IP Protection</b>",
+            "<b>Dispute Resolution & Legal Representation</b>",
           ],
         },
         {
           icon: Lock,
           title: "Data Privacy & Protection",
-          description: "GDPR, CCPA compliance and privacy policy development",
+          description: `Implementation of <b>privacy frameworks</b> and controls for global data protection compliance.`,
           features: [
-            "Privacy Assessments",
-            "Policy Development",
-            "Data Mapping",
-            "Breach Response",
+            "<b>GDPR, CCPA, HIPAA, and IT Act Compliance Assessments</b>",
+            "<b>Privacy Impact Assessments & Data Mapping</b>",
+            "<b>Privacy Policy & Consent Management Design</b>",
+            "<b>Breach Response Planning & Reporting Procedures</b>",
           ],
         },
         {
           icon: CheckCircle,
-          title: "Regulatory Compliance",
-          description:
-            "Navigation of complex regulatory requirements across industries",
+          title: "Regulatory Compliance & GRC",
+          description: `Comprehensive <b>regulatory alignment and GRC program setup</b> across sectors.`,
           features: [
-            "Regulatory Analysis",
-            "Compliance Strategy",
-            "Filing Support",
-            "Ongoing Monitoring",
+            `<b>Regulatory Analysis & Risk Interpretation (ISO 27001, NIST, PCI DSS)</b>}`,
+            "<b>Enterprise GRC Implementation & Maturity Evaluation</b>",
+            "<b>Third-Party Risk & Vendor Assessment (TPRM)</b>",
+            "<b>Compliance Monitoring & Reporting Frameworks</b>",
           ],
         },
         {
           icon: FileText,
-          title: "Legal Documentation",
-          description:
-            "Drafting and review of technology-related legal documents",
+          title: "Legal Documentation & Governance",
+          description: `Drafting and review of <b>IT governance policies, terms of service, and legal agreements</b>.`,
           features: [
-            "Contract Drafting",
-            "Policy Creation",
-            "Terms of Service",
-            "Privacy Notices",
+            "<b>Information Security Policies (ISP, DLP, AUP)</b>",
+            "<b>Terms of Service & Privacy Notices</b>",
+            "<b>Governance Documentation (BCP/DR, Risk Management Charters)</b>",
+            "<b>Audit Readiness & Certification Support (ISO, SOC 2)</b>",
           ],
         },
       ],
     },
   ];
-
   const scrollToContact = () => {
-    const element = document.getElementById("contact");
+    const element = document.getElementById("connectInfoCards");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -148,13 +149,13 @@ export function Services() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl mb-4">Professional Services</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-2">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Delivering a unique combination of{" "}
             <b>IT auditing, risk management, and legal expertise</b> — designed
             to help organizations strengthen cybersecurity, ensure compliance,
             and enhance governance across industries.
           </p>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-2">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             From global banks and healthcare institutions to media and
             government enterprises, my work focuses on{" "}
             <b>
@@ -163,7 +164,7 @@ export function Services() {
               mitigation.
             </b>
           </p>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-2">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             {" "}
             I specialize in transforming complex frameworks like{" "}
             <b>
@@ -177,71 +178,59 @@ export function Services() {
         </div>
 
         <div className="space-y-16">
-          {services.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="space-y-8">
-              {/* Category Header */}
-              <div className="text-center">
-                <h3 className="text-2xl mb-3">{category.category}</h3>
-                <p className="text-muted-foreground max-w-xl mx-auto">
-                  {category.description}
-                </p>
-              </div>
+          {services.map((category, i) => (
+            <section key={i} className="py-12">
+              <h2 className="text-2xl font-semibold mb-4">
+                {category.category}
+              </h2>
+              <p
+                className="text-muted-foreground mb-8"
+                dangerouslySetInnerHTML={{ __html: category.description }}
+              ></p>
 
-              {/* Services Grid */}
-              <div className="grid lg:grid-cols-2 gap-8">
-                {category.services.map((service, serviceIndex) => {
-                  const Icon = service.icon;
+              <div className="grid md:grid-cols-2 gap-8">
+                {category.services.map((srv, idx) => {
+                  const Icon = srv.icon;
                   return (
-                    <Card
-                      key={serviceIndex}
-                      className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300"
+                    <div
+                      key={idx}
+                      className="p-6 border rounded-xl hover:shadow-lg transition"
                     >
-                      <CardHeader className="p-0 mb-6">
-                        <div className="flex items-start space-x-4 mb-4">
-                          <div className="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                            <Icon className="h-6 w-6 text-primary" />
-                          </div>
-                          <div className="flex-1">
-                            <CardTitle className="text-xl mb-2">
-                              {service.title}
-                            </CardTitle>
-                            <p className="text-muted-foreground">
-                              {service.description}
-                            </p>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="p-0">
-                        <div className="space-y-3">
-                          <h5 className="font-medium">Key Features:</h5>
-                          <div className="grid grid-cols-2 gap-2">
-                            {service.features.map((feature, featureIndex) => (
-                              <Badge
-                                key={featureIndex}
-                                variant="secondary"
-                                className="text-xs justify-start"
-                              >
-                                {feature}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                      <div className="flex items-center gap-3 mb-3">
+                        <Icon className="h-6 w-6 text-primary" />
+                        <h3 className="text-lg font-medium">{srv.title}</h3>
+                      </div>
+                      <p
+                        className="text-sm text-muted-foreground mb-4"
+                        dangerouslySetInnerHTML={{ __html: srv.description }}
+                      ></p>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        {srv.features.map((feature, fidx) => (
+                          <li
+                            key={fidx}
+                            dangerouslySetInnerHTML={{ __html: feature }}
+                          ></li>
+                        ))}
+                      </ul>
+                    </div>
                   );
                 })}
               </div>
-            </div>
+            </section>
           ))}
         </div>
 
         <div className="text-center mt-16">
           <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500">
-            <h3 className="text-xl mb-4">Ready to Secure Your Organization?</h3>
+            <h3 className="text-xl mb-4">
+              Ready to Strengthen Your Security & Compliance Posture?
+            </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Get started with a comprehensive assessment tailored to your
-              specific needs and industry requirements. Contact me today to
-              discuss your compliance and security objectives.
+              Leverage proven expertise across{" "}
+              <b>ITGC, SOX, ISO 27001, Data Privacy, and GRC frameworks</b> to
+              secure your organization and meet regulatory expectations with
+              confidence. Let’s work together to build a resilient, audit-ready,
+              and compliant environment.
             </p>
             <Button onClick={scrollToContact} size="lg" className="group">
               Schedule Consultation

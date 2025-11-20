@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 
 // keep Hero eager so its buttons never suspend on theme flip
 import { Hero } from "./components/Hero";
+import BrandTagline from "./components/BrandTagline";
 
 import SectionLoader from "./components/SectionLoader";
 

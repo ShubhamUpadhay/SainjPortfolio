@@ -2,11 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
   Calendar,
   Shield,
   Scale,
@@ -15,44 +15,47 @@ import {
   Award,
   Zap,
   Target,
-  Users
+  Users,
+  ShieldCheck,
 } from "lucide-react";
+import RealTimeAvailability from "./Availbility";
+import ServiceAreasCard from "./ServicesOffered";
 
 export function Contact() {
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
-      value: "sarah.mitchell@itauditlaw.com",
-      link: "mailto:sarah.mitchell@itauditlaw.com"
+      value: "sainjali.nayak67@gmail.com",
+      link: "mailto:sainjali.nayak67@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+91 7999751073",
+      link: "tel:+917999751073",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco Bay Area, CA",
-      link: null
+      value: "India",
+      link: null,
     },
     {
       icon: Clock,
       label: "Response Time",
       value: "Within 24 hours",
-      link: null
-    }
+      link: null,
+    },
   ];
 
   const expertiseAreas = [
     { skill: "IT Security Auditing", level: 95, icon: Shield },
     { skill: "Compliance Assessment", level: 92, icon: CheckCircle },
     { skill: "Risk Management", level: 90, icon: Target },
-    { skill: "Technology Law", level: 88, icon: Scale },
-    { skill: "Incident Response", level: 85, icon: Zap },
-    { skill: "Team Leadership", level: 87, icon: Users }
+    { skill: "Technology Law", level: 93, icon: Scale },
+    { skill: "Incident Response", level: 95, icon: Zap },
+    { skill: "Team Leadership", level: 97, icon: Users },
   ];
 
   const availability = [
@@ -60,18 +63,49 @@ export function Contact() {
     { day: "Tuesday", status: "limited", slots: 1 },
     { day: "Wednesday", status: "available", slots: 4 },
     { day: "Thursday", status: "busy", slots: 0 },
-    { day: "Friday", status: "available", slots: 2 }
+    { day: "Friday", status: "available", slots: 2 },
   ];
 
+  // const achievements = [
+  //   { icon: Award, title: "500+ Audits", subtitle: "Successfully Completed" },
+  //   { icon: Star, title: "98% Client", subtitle: "Satisfaction Rate" },
+  //   { icon: Shield, title: "Zero Security", subtitle: "Breaches Post-Audit" },
+  //   { icon: Scale, title: "50+ Legal", subtitle: "Cases Won" },
+  // ];
+
   const achievements = [
-    { icon: Award, title: "500+ Audits", subtitle: "Successfully Completed" },
-    { icon: Star, title: "98% Client", subtitle: "Satisfaction Rate" },
-    { icon: Shield, title: "Zero Security", subtitle: "Breaches Post-Audit" },
-    { icon: Scale, title: "50+ Legal", subtitle: "Cases Won" }
+    {
+      icon: Award,
+      title: "PwC Supernova Award",
+      subtitle: "Recognized for audit automation & impact",
+    },
+    {
+      icon: Star,
+      title: "HSBC Rising Star",
+      subtitle: "Awarded for excellence in privacy governance",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Zero Repeat Findings",
+      subtitle: "Across IAM, SOX ITGC & Privacy audits",
+    },
+    {
+      icon: CheckCircle,
+      title: "Improved Compliance Posture",
+      subtitle: "80%+ reduction in risk & privacy gaps",
+    },
+    {
+      icon: Scale,
+      title: "Legal & Audit Strength",
+      subtitle: "Cyber, IT Law & Regulatory Expertise",
+    },
   ];
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-background via-primary/5 to-secondary/15 dark:via-primary/10 dark:to-secondary/8 transition-all duration-500 relative overflow-hidden">
+    <section
+      id="connectInfoCards"
+      className="py-16 bg-gradient-to-b from-background via-primary/5 to-secondary/15 dark:via-primary/10 dark:to-secondary/8 transition-all duration-500 relative overflow-hidden"
+    >
       {/* Professional background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
@@ -81,8 +115,11 @@ export function Contact() {
         <div className="text-center mb-12">
           <h2 className="text-3xl mb-4">Let's Connect</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to strengthen your organization's security posture and ensure compliance? 
-            Explore my expertise and schedule a consultation to get started.
+            Your organization deserves security, clarity, and confidence — not
+            chaos, confusion, or compliance pressure. If you’re looking to
+            strengthen cybersecurity, elevate audit readiness, or navigate
+            complex privacy and legal requirements, I’m here to support you with
+            expertise and empathy.
           </p>
         </div>
 
@@ -96,7 +133,7 @@ export function Contact() {
                   Expertise & Skills
                 </CardTitle>
               </CardHeader>
-              
+
               <CardContent className="p-0">
                 <div className="space-y-6">
                   {expertiseAreas.map((area, index) => {
@@ -110,7 +147,9 @@ export function Contact() {
                             </div>
                             <span className="font-medium">{area.skill}</span>
                           </div>
-                          <span className="text-sm text-muted-foreground">{area.level}%</span>
+                          <span className="text-sm text-muted-foreground">
+                            {area.level}%
+                          </span>
                         </div>
                         <Progress value={area.level} className="h-2" />
                       </div>
@@ -127,34 +166,23 @@ export function Contact() {
                   This Week's Availability
                 </CardTitle>
               </CardHeader>
-              
-              <CardContent className="p-0">
-                <div className="space-y-3">
-                  {availability.map((day, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-accent/30 dark:bg-accent/20">
-                      <span className="font-medium">{day.day}</span>
-                      <div className="flex items-center space-x-2">
-                        <div className={`w-3 h-3 rounded-full ${
-                          day.status === 'available' ? 'bg-green-500' :
-                          day.status === 'limited' ? 'bg-yellow-500' : 'bg-red-500'
-                        }`}></div>
-                        <span className="text-sm text-muted-foreground">
-                          {day.status === 'available' && `${day.slots} slots`}
-                          {day.status === 'limited' && `${day.slots} slot`}
-                          {day.status === 'busy' && 'Fully booked'}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="mt-6 pt-6 border-t border-border">
-                  <Button className="w-full">
-                    Book a Consultation Call
-                    <Calendar className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </CardContent>
+
+              <RealTimeAvailability />
+            </Card>
+            <Card className="text-center mt-12">
+              <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500 relative overflow-hidden">
+                <CardHeader className="relative z-10">
+                  <CardTitle className="text-xl mb-4">
+                    Confidentiality Guaranteed
+                  </CardTitle>
+                  <CardContent className="text-muted-foreground max-w-2xl mx-auto">
+                    All consultations and communications are strictly
+                    confidential. I maintain the highest standards of
+                    professional ethics and client confidentiality in accordance
+                    with legal and auditing professional standards.
+                  </CardContent>
+                </CardHeader>
+              </div>
             </Card>
           </div>
 
@@ -164,7 +192,7 @@ export function Contact() {
               <CardHeader className="p-0 mb-6">
                 <CardTitle>Contact Information</CardTitle>
               </CardHeader>
-              
+
               <CardContent className="p-0">
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => {
@@ -175,12 +203,27 @@ export function Contact() {
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">{info.label}</p>
-                          <p className="font-medium">{info.value}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {info.label}
+                          </p>
+                          {info.label === "Email" ? (
+                            <a
+                              href={`mailto:${
+                                info.value
+                              }?subject=${encodeURIComponent(
+                                "Your Subject Here"
+                              )}&body=${encodeURIComponent("Your body here")}`}
+                              className="cursor-pointer"
+                            >
+                              {info.value}
+                            </a>
+                          ) : (
+                            <p className="font-medium">{info.value}</p>
+                          )}
                         </div>
                       </div>
                     );
-                    
+
                     return info.link ? (
                       <a key={index} href={info.link} className="block">
                         {content}
@@ -200,70 +243,32 @@ export function Contact() {
                   Key Achievements
                 </CardTitle>
               </CardHeader>
-              
+
               <CardContent className="p-0">
                 <div className="grid grid-cols-2 gap-4">
                   {achievements.map((achievement, index) => {
                     const Icon = achievement.icon;
                     return (
-                      <div key={index} className="text-center p-4 rounded-lg bg-accent/30 dark:bg-accent/20 hover:bg-accent/50 dark:hover:bg-accent/30 transition-colors">
+                      <div
+                        key={index}
+                        className="text-center p-4 rounded-lg bg-accent/30 dark:bg-accent/20 hover:bg-accent/50 dark:hover:bg-accent/30 transition-colors"
+                      >
                         <div className="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-3">
                           <Icon className="h-6 w-6 text-primary" />
                         </div>
-                        <div className="font-medium text-sm">{achievement.title}</div>
-                        <div className="text-xs text-muted-foreground">{achievement.subtitle}</div>
+                        <div className="font-medium text-sm">
+                          {achievement.title}
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          {achievement.subtitle}
+                        </div>
                       </div>
                     );
                   })}
                 </div>
               </CardContent>
             </Card>
-
-            <Card className="p-6 glass-card hover:shadow-lg dark:hover:shadow-primary/10 hover:scale-105 transition-all duration-300">
-              <CardHeader className="p-0 mb-4">
-                <CardTitle>Service Areas</CardTitle>
-              </CardHeader>
-              
-              <CardContent className="p-0">
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <Shield className="h-5 w-5 text-primary" />
-                    <span>IT Security & Risk Assessment</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Scale className="h-5 w-5 text-primary" />
-                    <span>Technology Law & Compliance</span>
-                  </div>
-                </div>
-                
-                <div className="mt-6">
-                  <h5 className="font-medium mb-3">Industries Served</h5>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">Financial Services</Badge>
-                    <Badge variant="secondary">Healthcare</Badge>
-                    <Badge variant="secondary">Technology</Badge>
-                    <Badge variant="secondary">Manufacturing</Badge>
-                    <Badge variant="secondary">Retail</Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <div className="text-center mt-12">
-          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500 relative overflow-hidden">
-            {/* Decorative gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 dark:from-primary/10 dark:to-secondary/10"></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-xl mb-4">Confidentiality Guaranteed</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                All consultations and communications are strictly confidential. I maintain the highest 
-                standards of professional ethics and client confidentiality in accordance with legal 
-                and auditing professional standards.
-              </p>
-            </div>
+            <ServiceAreasCard />
           </div>
         </div>
       </div>
