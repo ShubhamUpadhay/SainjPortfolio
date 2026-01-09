@@ -12,7 +12,7 @@ export default defineConfig({
       brotliSize: true,
     }),
   ],
-  base: "/SainjPortfolio/",
+  base: "/",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
     alias: {
