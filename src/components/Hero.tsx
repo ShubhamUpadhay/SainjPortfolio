@@ -3,6 +3,8 @@ import { useTheme } from "./ThemeProvider";
 import { Button } from "./ui/button";
 import { Img } from "./ui/img";
 import { ScrollLink } from "./ui/scrollLink";
+import styles from "./stars.module.css";
+import { useEffect, useState } from "react";
 
 export function Hero() {
   const credentials = [
@@ -22,11 +24,23 @@ export function Hero() {
       subtitle: "PwC, HSBC, University of Virginia",
     },
   ];
+
+  let theme = useTheme().theme;
+
+  const [starTheme, setStarTheme] = useState(theme);
+  useEffect(() => {
+    setStarTheme(theme);
+  }, [theme]);
   return (
     <section
       id="hero"
       className="pt-20 pb-16 bg-gradient-to-br from-transparent via-primary/5 to-secondary/20 dark:via-primary/10 dark:to-secondary/5 transition-colors duration-300 relative overflow-hidden min-h-screen flex items-center"
     >
+      <div className={styles.wrapper} data-theme={starTheme}>
+        <div className={styles.stars}></div>
+        <div className={styles.stars2}></div>
+        <div className={styles.stars3}></div>
+      </div>
       {/* Professional gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-secondary/6 dark:from-primary/6 dark:to-secondary/3 pointer-events-none z-0"></div>
 

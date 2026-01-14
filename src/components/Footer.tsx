@@ -44,6 +44,7 @@ export function Footer() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gradient-to-br from-primary via-primary to-primary/90 dark:from-primary dark:via-primary dark:to-primary/95 text-primary-foreground transition-all duration-500 relative overflow-hidden">
@@ -195,7 +196,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-sm text-primary-foreground/60">
-            © 2025{" "}
+            © {currentYear}{" "}
             <a
               href="https://www.linkedin.com/company/98856202/"
               target="_blank"
